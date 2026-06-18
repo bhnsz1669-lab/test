@@ -1,121 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>COMPANY Phishing Test</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <style>
-    body {
-      background-color: #f9f9f9;
-    }
-    .header {
-      background-color: #111111;
-      padding: 10px 20px;
-      color: #ffffff;
-    }
-    .navLink {
-      display: inline-block;
-    }
-    .navLink h3 {
-      margin: 0;
-      font-weight: 300;
-    }
-    b {
-      color: #EF5350;
-      font-weight: bold;
-    }
-    .jumbotron {
-      background-color: #f2dede;
-      color: #a94442;
-      border: 1px solid #ebccd1;
-      margin-top: 30px;
-      border-radius: 6px !important;
-    }
-    .tip-box {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 4px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      margin-bottom: 20px;
-      min-height: 280px;
-    }
-    .tip-box h1 {
-      color: #ef5350;
-      font-size: 28px;
-      margin-top: 0;
-    }
-    .tip-box h2 {
-      font-size: 20px;
-      margin-bottom: 15px;
-    }
-    pre {
-      background-color: #f5f5f5;
-      border: 1px solid #ccc;
-      padding: 8px;
-    }
-    /* استایل موقت برای کادر تصویر بنر */
-    .banner-placeholder {
-      background: #e0e0e0;
-      border: 2px dashed #b0b0b0;
-      padding: 15px;
-      color: #666;
-      font-weight: bold;
-      text-align: center;
-      margin-top: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود | دوست‌یابی</title>
+    
+    <!-- فونت وزیرمتن -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome برای آیکون‌ها -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-  <div class="header">
-    <div class="navLink">
-      <h3>
-        <img src="https://via.placeholder.com/150x50/000000/FFFFFF?text=COMPANY+LOGO" height="40" style="vertical-align: middle; margin-right: 10px;" alt="Logo">
-        <b>Phishing Test</b>
-      </h3>
+    <!-- پس‌زمینه متحرک -->
+    <div class="animated-bg">
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+        <div class="bg-shape shape-3"></div>
+        <div class="bg-shape shape-4"></div>
     </div>
-  </div>
 
-  <div class="container">
-    
-    <div class="jumbotron text-center">
-      <h2>You clicked on a simulated phishing test.</h2>
-      <h3>Here are some tips to help you stay safer in the future.</h3>
+    <!-- ذرات نورانی -->
+    <div class="particles">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
     </div>
-    
-    <div class="row">
-      
-      <div class="col-md-4">
-        <div class="tip-box">
-          <h1>Tip #1</h1>
-          <h2>Stop, Look, Think</h2>
-          <p>Did anything look out of the ordinary? Did you recognize the sender's address? Was it similar but not the same as an official email?</p>
-          <pre><p style="font-size:1.1em; margin:0;">Information Technology &lt;it@company.<span style="color:red; font-weight:bold;">co</span>&gt;</p></pre>
-        </div>
-      </div>
-      
-      <div class="col-md-4">
-        <div class="tip-box">
-          <h1>Tip #2</h1>
-          <h2>Spot a red flag?</h2>
-          <p>At COMPANY, any email from an external sender should have a caution message at the very top. Do you see this banner?</p>
-          <div class="banner-placeholder">
-            [ EXTERNAL EMAIL BANNER PLACEHOLDER ]
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-md-4">
-        <div class="tip-box">
-          <h1>Tip #3</h1>
-          <h2>When in doubt, throw it out</h2>
-          <p>If you ever think that an email is suspicious, it is better to err on the side of caution. Forward it immediately to <strong>phish@COMPANY.com</strong></p>
-        </div>
-      </div>
-      
-    </div>
-  </div>
 
+    <!-- کانتینر اصلی -->
+    <div class="login-container">
+        
+        <!-- کارت شیشه‌ای -->
+        <div class="glass-card">
+            
+            <!-- لوگو و هدر -->
+            <div class="card-header">
+                <div class="logo-wrapper">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <div class="logo-glow"></div>
+                </div>
+                <h1 class="card-title">خوش آمدید</h1>
+                <p class="card-subtitle">برای ادامه وارد حساب خود شوید</p>
+            </div>
+            <!-- فرم ورود -->
+            <form class="login-form" onsubmit="handleLogin(event)">
+                
+                <!-- فیلد نام کاربری -->
+                <div class="input-group">
+                    <label class="input-label">
+                        <i class="fa-solid fa-user"></i>
+                        نام کاربری
+                    </label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="username" 
+                            class="input-field" 
+                            placeholder="نام کاربری خود را وارد کنید"
+                            autocomplete="username"
+                            required
+                        >
+                        <span class="input-icon">
+                            <i class="fa-solid fa-at"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- فیلد رمز عبور -->
+                <div class="input-group">
+                    <label class="input-label">
+                        <i class="fa-solid fa-lock"></i>
+                        رمز عبور
+                    </label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            class="input-field" 
+                            placeholder="رمز عبور خود را وارد کنید"
+                            autocomplete="current-password"
+                            required
+                        >
+                        <button type="button" class="toggle-password" onclick="togglePassword()">
+                            <i class="fa-solid fa-eye" id="eyeIcon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- مرا به خاطر بسپار -->
+                <div class="options-row">
+                    <label class="remember-me">
+                        <input type="checkbox" id="remember">                        <span class="checkmark"></span>
+                        <span class="remember-text">مرا به خاطر بسپار</span>
+                    </label>
+                    <a href="#" class="forgot-link">فراموشی رمز؟</a>
+                </div>
+
+                <!-- دکمه ورود -->
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">ورود به حساب</span>
+                    <span class="btn-icon">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </span>
+                    <div class="btn-loader" style="display:none;">
+                        <div class="spinner"></div>
+                    </div>
+                </button>
+
+            </form>
+
+            <!-- جداکننده -->
+            <div class="divider">
+                <span>یا ورود با</span>
+            </div>
+
+            <!-- دکمه‌های شبکه‌های اجتماعی -->
+            <div class="social-login">
+                <button class="social-btn google" onclick="socialLogin('google')">
+                    <i class="fa-brands fa-google"></i>
+                </button>
+                <button class="social-btn telegram" onclick="socialLogin('telegram')">
+                    <i class="fa-brands fa-telegram"></i>
+                </button>
+                <button class="social-btn github" onclick="socialLogin('github')">
+                    <i class="fa-brands fa-github"></i>
+                </button>
+            </div>
+
+            <!-- لینک ثبت‌نام -->
+            <div class="signup-link">
+                حساب کاربری ندارید؟ 
+                <a href="#" onclick="goToSignup()">ثبت‌نام کنید</a>
+            </div>
+
+        </div>
+
+        <!-- پیام موفقیت -->
+        <div class="success-message" id="successMessage">
+            <div class="success-icon">
+                <i class="fa-solid fa-check"></i>
+            </div>            <h3>ورود موفق!</h3>
+            <p>در حال انتقال...</p>
+        </div>
+
+    </div>
+
+    <script src="./script.js"></script>
 </body>
 </html>
