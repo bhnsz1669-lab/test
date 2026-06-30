@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
     <style>
 
-/* ═══ رنگ‌ها و اندازه‌های اصلی ═══ */
+/* ═══ رنگ‌ها و اندازه‌های اصلی سایت ═══ */
 :root {
     --bg: #f2f2f7;
     --card: #fff;
@@ -31,7 +31,7 @@
     --acc: linear-gradient(135deg,#667eea,#764ba2);
 }
 
-/* ═══ تنظیمات پیش‌فرض ═══ */
+/* ═══ تنظیمات پیش‌فرض + جلوگیری از زوم ═══ */
 * {
     margin: 0;
     padding: 0;
@@ -66,35 +66,36 @@ a, button, label, input {
 
 /* ═══════════════════════════════════════════
    انیمیشن‌ها
+   هر انیمیشن یه حرکت خاص تعریف می‌کنه
    ═══════════════════════════════════════════ */
 
-/* محو شدن + حرکت از پایین به بالا */
+/* محو شدن + حرکت از پایین به بالا — برای ظاهر شدن آیتم‌ها */
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(14px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* درخشش سبز — نقطه آنلاین */
+/* درخشش سبز — نقطه آنلاین (نگه‌داشته شده ولی استفاده نمیشه) */
 @keyframes glow {
     0% { box-shadow: 0 0 0 0 rgba(52,199,89,.7), 0 0 4px 0 rgba(52,199,89,.2); }
     50% { box-shadow: 0 0 0 6px rgba(52,199,89,0), 0 0 8px 1px rgba(52,199,89,.15); }
     100% { box-shadow: 0 0 0 0 rgba(52,199,89,.7), 0 0 4px 0 rgba(52,199,89,.2); }
 }
 
-/* درخشش خاکستری — نقطه آفلاین */
+/* درخشش خاکستری — نقطه آفلاین (نگه‌داشته شده ولی استفاده نمیشه) */
 @keyframes glowGray {
     0% { box-shadow: 0 0 0 0 rgba(142,142,147,.4); }
     70% { box-shadow: 0 0 0 6px rgba(142,142,147,0); }
     to { box-shadow: 0 0 0 0 rgba(142,142,147,0); }
 }
 
-/* بزرگ و کوچک شدن */
+/* بزرگ و کوچک شدن — نقطه آنلاین (نگه‌داشته شده ولی استفاده نمیشه) */
 @keyframes pulse {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.2); }
 }
 
-/* تکون خوردن آیکون زنگ */
+/* تکون خوردن آیکون زنگ — اعلان پیام جدید */
 @keyframes bellRing {
     0%, 100% { transform: rotate(0); }
     10% { transform: rotate(14deg); }
@@ -106,7 +107,7 @@ a, button, label, input {
     70% { transform: rotate(2deg); }
 }
 
-/* تکون خوردن سبد خرید */
+/* تکون خوردن سبد خرید — وقتی روش بزنی */
 @keyframes cartBounce {
     0% { transform: scale(1); }
     30% { transform: scale(1.3) rotate(-10deg); }
@@ -114,13 +115,19 @@ a, button, label, input {
     to { transform: scale(1) rotate(0); }
 }
 
-/* ظاهر شدن آیتم چت با اسلاید */
+/* درخشش متن عنوان بالا — "دوست‌یابی" */
+@keyframes titleGlow {
+    0%, 100% { text-shadow: 0 0 10px rgba(102,126,234,.3), 0 0 25px rgba(118,75,162,.08); }
+    50% { text-shadow: 0 0 18px rgba(102,126,234,.5), 0 0 40px rgba(118,75,162,.15); }
+}
+
+/* ظاهر شدن آیتم چت با اسلاید از بالا */
 @keyframes ciSlideIn {
     from { max-height: 0; opacity: 0; padding: 0 8px; border-bottom-width: 0; transform: translateY(-50px); }
     to { max-height: 120px; opacity: 1; padding: 11px 8px; border-bottom-width: .5px; transform: translateY(0); }
 }
 
-/* چشمک آبی پس‌زمینه */
+/* چشمک آبی پس‌زمینه — وقتی چت جدید میاد */
 @keyframes ciGlow {
     0%, 100% { background-color: transparent; }
     30% { background-color: rgba(0,122,255,.06); }
@@ -132,7 +139,7 @@ a, button, label, input {
     to { max-height: 30px; opacity: 1; transform: translateY(0); }
 }
 
-/* نمایش "در حال تایپ..." */
+/* نمایش نقطه‌های "در حال تایپ..." — فقط یه مدت کوتاه */
 @keyframes typingShow {
     0% { max-height: 0; opacity: 0; }
     10% { max-height: 25px; opacity: 1; }
@@ -141,19 +148,19 @@ a, button, label, input {
     100% { max-height: 0; opacity: 0; }
 }
 
-/* ظاهر شدن عدد نخوانده */
+/* ظاهر شدن عدد پیام نخوانده */
 @keyframes badgePop {
     from { opacity: 0; transform: scale(0); }
     to { opacity: 1; transform: scale(1); }
 }
 
-/* حرکت نقطه‌های تایپینگ */
+/* حرکت نقطه‌های تایپینگ بالا و پایین */
 @keyframes typingDot {
     0%, 60%, 100% { transform: translateY(0); opacity: .3; }
     30% { transform: translateY(-6px); opacity: 1; }
 }
 
-/* اعلان یک‌بار */
+/* اعلان یک‌بار: بیاد بالا، بمونه، بره — فقط یک بار */
 @keyframes notifOnce {
     0% { transform: translate(-50%,-130%); opacity: 0; }
     10% { transform: translate(-50%,0); opacity: 1; }
@@ -161,13 +168,13 @@ a, button, label, input {
     100% { transform: translate(-50%,-130%); opacity: 0; }
 }
 
-/* درخشش دور استوری */
+/* درخشش رنگی دور استوری‌ها (نگه‌داشته شده ولی استفاده نمیشه) */
 @keyframes storyGlow {
     0%, 100% { box-shadow: 0 0 6px rgba(240,147,251,.25), 0 0 12px rgba(240,147,251,.08); }
     50% { box-shadow: 0 0 14px rgba(240,147,251,.45), 0 0 28px rgba(240,147,251,.15); }
 }
 
-/* ظاهر شدن "امروز" */
+/* ظاهر شدن نوشته "امروز" */
 @keyframes todayIn {
     from { max-height: 0; opacity: 0; padding: 0 14px; }
     to { max-height: 50px; opacity: 1; padding: 12px 14px; }
@@ -179,50 +186,54 @@ a, button, label, input {
     to { max-height: 80px; opacity: 1; margin: 8px 14px; padding: 10px 14px; }
 }
 
-/* خط نوری متحرک */
+/* خط نوری متحرک روی آیتم‌های چت */
 @keyframes shimmerSweep {
     0% { left: -100%; }
     50%, 100% { left: 200%; }
 }
 
-/* نور قیمت */
+/* حرکت نور روی قیمت اشتراک */
 @keyframes shimmer {
     0% { background-position: -200% center; }
     to { background-position: 200% center; }
 }
 
-/* بالا پایین شدن آیکون خالی */
+/* بالا پایین شدن آیکون صفحه خالی */
 @keyframes emptyFloat {
     0%, 100% { transform: translateY(0) rotate(0deg); }
     25% { transform: translateY(-8px) rotate(1.5deg); }
     75% { transform: translateY(4px) rotate(-1deg); }
 }
 
-/* درخشش آیکون خالی */
+/* درخشش آیکون صفحه خالی */
 @keyframes emptyGlow {
     0%, 100% { filter: drop-shadow(0 4px 15px rgba(102,126,234,.2)); }
     50% { filter: drop-shadow(0 6px 25px rgba(102,126,234,.35)); }
 }
 
-/* سه نقطه بالا پایین */
+/* حرکت سه نقطه انتظار بالا پایین */
 @keyframes dotWave {
     0%, 60%, 100% { transform: translateY(0); }
     30% { transform: translateY(-8px); }
 }
 
-/* قلب‌های شناور */
+/* قلب ۱: بالا و چپ میره و محو میشه */
 @keyframes heartFloat1 {
     0% { transform: translate(0,0) scale(0); opacity: 0; }
     15% { transform: translate(-15px,-25px) scale(1); opacity: .8; }
     85% { opacity: .6; }
     100% { transform: translate(-30px,-90px) scale(.4); opacity: 0; }
 }
+
+/* قلب ۲: بالا و راست میره و محو میشه */
 @keyframes heartFloat2 {
     0% { transform: translate(0,0) scale(0); opacity: 0; }
     15% { transform: translate(18px,-20px) scale(.8); opacity: .7; }
     85% { opacity: .5; }
     100% { transform: translate(35px,-85px) scale(.3); opacity: 0; }
 }
+
+/* قلب ۳: بالا میره و محو میشه */
 @keyframes heartFloat3 {
     0% { transform: translate(0,0) scale(0); opacity: 0; }
     15% { transform: translate(-8px,-28px) scale(.6); opacity: .6; }
@@ -230,37 +241,41 @@ a, button, label, input {
     100% { transform: translate(-20px,-95px) scale(.2); opacity: 0; }
 }
 
-/* چرخش حلقه‌ها */
+/* چرخش حلقه‌های دور آیکون */
 @keyframes orbitSpin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
-/* محو شدن صفحه خالی بعد ۵۷ ثانیه */
+/* محو شدن صفحه خالی بعد از ۵۷ ثانیه */
 @keyframes emptyFadeOut {
     from { opacity: 1; }
     to { opacity: 0; pointer-events: none; }
 }
 
-/* پالس حلقه داخلی */
+/* پالس زدن حلقه داخلی آیکون */
 @keyframes ringPulse {
     0%, 100% { transform: scale(1); opacity: .3; }
     50% { transform: scale(1.08); opacity: .5; }
 }
 
-/* ذرات پس‌زمینه */
+/* حرکت ذرات پس‌زمینه — نوع ۱ */
 @keyframes bpF1 {
     0%, 100% { transform: translate(0,0); }
     25% { transform: translate(15px,-20px); }
     50% { transform: translate(-10px,-40px); }
     75% { transform: translate(20px,-15px); }
 }
+
+/* حرکت ذرات پس‌زمینه — نوع ۲ */
 @keyframes bpF2 {
     0%, 100% { transform: translate(0,0); }
     25% { transform: translate(-20px,15px); }
     50% { transform: translate(10px,-30px); }
     75% { transform: translate(-15px,20px); }
 }
+
+/* حرکت ذرات پس‌زمینه — نوع ۳ */
 @keyframes bpF3 {
     0%, 100% { transform: translate(0,0); }
     25% { transform: translate(12px,25px); }
@@ -268,23 +283,44 @@ a, button, label, input {
     75% { transform: translate(25px,-10px); }
 }
 
-/* ذرات اطراف آیکون */
+/* حرکت ذرات کوچک اطراف آیکون — نوع ۱ */
 @keyframes epF1 {
     0%, 100% { transform: translate(0,0); opacity: .25; }
     50% { transform: translate(10px,-15px); opacity: .5; }
 }
+
+/* حرکت ذرات کوچک اطراف آیکون — نوع ۲ */
 @keyframes epF2 {
     0%, 100% { transform: translate(0,0); opacity: .25; }
     50% { transform: translate(-12px,10px); opacity: .4; }
 }
+
+/* حرکت ذرات کوچک اطراف آیکون — نوع ۳ */
 @keyframes epF3 {
     0%, 100% { transform: translate(0,0); opacity: .25; }
     50% { transform: translate(8px,12px); opacity: .5; }
 }
 
+/* ═══ اعلان "اشتراک ندارید" — فقط یک بار ظاهر میشه ═══ */
+/* اعلان میاد بالا، یه مدت میمونه، و میره — همزمان شیت باز میشه */
+@keyframes moreNotifAnim {
+    0%   { transform: translate(-50%,-130%); opacity: 0; }
+    8%   { transform: translate(-50%,0);      opacity: 1; }
+    40%  { transform: translate(-50%,0);      opacity: 1; }
+    52%  { transform: translate(-50%,-130%); opacity: 0; }
+    100% { transform: translate(-50%,-130%); opacity: 0; }
+}
+
+/* ═══ درخشش آیتم "+" موقع هاور ═══ */
+@keyframes plusGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(102,126,234,.3); }
+    50% { box-shadow: 0 0 0 8px rgba(102,126,234,0); }
+}
+
 
 /* ═══════════════════════════════════════════
    ذرات رنگی پس‌زمینه
+   ۱۲ ذره رنگی که آرام توی صفحه حرکت می‌کنن
    ═══════════════════════════════════════════ */
 .bg-particles {
     position: fixed;
@@ -316,7 +352,9 @@ a, button, label, input {
 
 
 /* ═══════════════════════════════════════════
-   دکمه مخفی
+   دکمه‌های مخفی (چک‌باکس‌ها)
+   subTog = کنترل شیت اشتراک اصلی (پیام دادن)
+   moreTog = کنترل شیت دوم (دیدن کاربرهای بیشتر)
    ═══════════════════════════════════════════ */
 .css-tog {
     position: absolute;
@@ -328,41 +366,47 @@ a, button, label, input {
 
 
 /* ═══════════════════════════════════════════
-   ★ تغییر ۱: هدر با عنوان طبیعی‌تر
-   عنوان داخل یه بکگراند گرد نشسته
+   ردیف عنوان صفحه
+   جایگزین هدر قبلی — عنوان "دوست‌یابی" با متن لوکس
+   + آیکون سبد خرید اشتراک
    ═══════════════════════════════════════════ */
-.app-hdr {
-    position: sticky;
-    top: 0;
-    z-index: 90;
-    padding: 10px 14px;
+.page-title-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--gl);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: .5px solid var(--dv);
-    box-shadow: 0 1px 8px rgba(0,0,0,.04);
+    padding: 18px 16px 4px;
 }
 
-.hdr-left { flex: 1; }
-.hdr-center { flex: 2; display: flex; justify-content: center; }
-.hdr-right { flex: 1; display: flex; justify-content: flex-end; }
-
-/* ★ عنوان: رنگ ملایم بنفش + بکگراند گرد + سایه ظریف — طبیعی و چسبیده به هدر */
-.hdr-title {
-    font-size: 1.08rem;
-    font-weight: 800;
-    color: #5b4fa0;
-    background: linear-gradient(135deg, rgba(102,126,234,.1), rgba(118,75,162,.1));
-    padding: 6px 20px;
-    border-radius: 20px;
-    letter-spacing: .5px;
-    border: 1px solid rgba(102,126,234,.12);
+/* متن لوکس "دوست‌یابی" — گرادیانت بنفش با زیرخط تزئینی */
+.page-title {
+    font-size: 1.55rem;
+    font-weight: 900;
+    background: var(--acc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleGlow 3s ease-in-out infinite;
+    position: relative;
+    display: inline-block;
+    letter-spacing: -.02em;
 }
 
-/* دکمه سبد خرید */
+/* زیرخط تزئینی زیر عنوان */
+.page-title::after {
+    content: '';
+    display: block;
+    width: 44px;
+    height: 3.5px;
+    background: var(--acc);
+    border-radius: 2px;
+    margin-top: 5px;
+    opacity: .65;
+}
+
+
+/* ═══════════════════════════════════════════
+   دکمه سبد خرید — کنار عنوان روی صفحه اصلی
+   ═══════════════════════════════════════════ */
 .cart-btn {
     background: none;
     border: none;
@@ -390,6 +434,7 @@ a, button, label, input {
 
 .cart-btn:active svg { animation: cartBounce .5s ease; }
 
+/* نقطه قرمز بالای سبد خرید */
 .cart-badge {
     position: absolute;
     top: 2px;
@@ -408,8 +453,12 @@ a, button, label, input {
 
 
 /* ═══════════════════════════════════════════
-   ★ تغییر ۲: نوار استوری‌ها — اسکرول برعکس
-   direction: ltr باعث میشه از چپ شروع بشه
+   نوار استوری‌ها
+   آواتار افراد با حلقه رنگی
+   حلقه رنگی = استوری داره
+   حلقه خاکستری = استوری نداره
+   اسکرول برعکس (چپ به راست)
+   انتها = آیتم "+" برای دیدن کاربرهای بیشتر
    ═══════════════════════════════════════════ */
 .stories-wrap {
     padding: 14px 0 6px;
@@ -421,11 +470,13 @@ a, button, label, input {
     padding: 0 14px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    direction: ltr;  /* ★ اسکرول از چپ به راست — برعکس قبل */
+    /* اسکرول برعکس: از چپ به راست شروع میشه */
+    direction: ltr;
 }
 
 .stories-bar::-webkit-scrollbar { display: none; }
 
+/* هر آیتم استوری */
 .story-item {
     flex-shrink: 0;
     text-align: center;
@@ -436,9 +487,11 @@ a, button, label, input {
     text-decoration: none;
     color: inherit;
     position: relative;
-    direction: rtl;  /* ★ متن فارسی داخل آیتم راست‌چین بمونه */
+    /* متن فارسی راست‌چین بمونه */
+    direction: rtl;
 }
 
+/* هر استوری با تاخیر کمی ظاهر بشه */
 .story-item:nth-child(1) { animation-delay: 0s; }
 .story-item:nth-child(2) { animation-delay: .06s; }
 .story-item:nth-child(3) { animation-delay: .12s; }
@@ -446,7 +499,9 @@ a, button, label, input {
 .story-item:nth-child(5) { animation-delay: .24s; }
 .story-item:nth-child(6) { animation-delay: .3s; }
 .story-item:nth-child(7) { animation-delay: .36s; }
+.story-item:nth-child(8) { animation-delay: .42s; }
 
+/* حلقه رنگی دور آواتار */
 .story-ring {
     width: 64px;
     height: 64px;
@@ -458,10 +513,11 @@ a, button, label, input {
     position: relative;
 }
 
-.story-ring:not(.no-story) { animation: storyGlow 3s ease-in-out infinite; }
+.story-ring:not(.no-story):not(.plus-ring) { animation: storyGlow 3s ease-in-out infinite; }
 .story-ring.no-story { background: var(--dv); padding: 2px; }
 .story-item:active .story-ring { transform: scale(.92); }
 
+/* دایره عکس داخل حلقه */
 .story-inner {
     width: 100%;
     height: 100%;
@@ -479,6 +535,7 @@ a, button, label, input {
     display: block;
 }
 
+/* اسم زیر استوری */
 .story-name {
     font-size: 10.5px;
     font-weight: 500;
@@ -488,37 +545,76 @@ a, button, label, input {
     text-overflow: ellipsis;
 }
 
-
-/* ═══════════════════════════════════════════
-   ★ تغییر ۳: نقطه آنلاین — سمت راست‌تر و روی عکس
-   ═══════════════════════════════════════════ */
+/* نقطه وضعیت (آنلاین/آفلاین) — بدون انیمیشن چشمک */
 .sd {
     position: absolute;
-    bottom: 2px;       /* ★ کمی بالاتر از لبه */
-    right: 2px;        /* ★ کمی سمت راست‌تر */
-    width: 14px;
-    height: 14px;
+    bottom: -1px;
+    right: -1px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     border: 2.5px solid var(--bg);
-    z-index: 5;        /* ★ بالای عکس باشه */
+    z-index: 3;
     pointer-events: none;
     flex-shrink: 0;
 }
 
+/* سبز = آنلاین — بدون چشمک، ثابت */
 .sd.on {
     background: var(--gn);
     box-shadow: 0 0 6px rgba(52,199,89,.4);
-    animation: glow 2s infinite, pulse 2.5s ease-in-out infinite;
 }
 
+/* خاکستری = آفلاین — بدون انیمیشن */
 .sd.off {
     background: var(--tx3);
-    animation: glowGray 3s infinite;
+}
+
+
+/* ═══════════════════════════════════════════
+   آیتم "+" در انتهای اسکرول استوری‌ها
+   دایره نقطه‌چین با علامت مثبت وسطش
+   کلیک = اعلان "اشتراک ندارید" + شیت خرید
+   ═══════════════════════════════════════════ */
+
+/* حلقه نقطه‌چین دور آیتم "+" */
+.story-plus .plus-ring {
+    background: none;
+    border: 2.5px dashed rgba(102,126,234,.4);
+    animation: plusGlow 3s ease-in-out infinite;
+}
+
+/* دایره داخلی آیتم "+" */
+.story-plus .plus-inner {
+    background: rgba(102,126,234,.06);
+    border-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* علامت مثبت */
+.plus-icon {
+    font-size: 1.7rem;
+    font-weight: 300;
+    background: var(--acc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    display: block;
+}
+
+/* فشردن موقع لمس */
+.story-plus:active .plus-ring {
+    transform: scale(.92);
+    border-color: rgba(102,126,234,.7);
 }
 
 
 /* ═══════════════════════════════════════════
    لیست چت‌ها
+   هر آیتم: آواتار + اسم + پیام + بج
    ═══════════════════════════════════════════ */
 .chat-list {
     padding: 0 12px;
@@ -526,6 +622,7 @@ a, button, label, input {
     min-height: 300px;
 }
 
+/* یک آیتم چت */
 .ci {
     display: flex;
     align-items: center;
@@ -542,6 +639,7 @@ a, button, label, input {
 
 .ci:active { background: var(--dv); }
 
+/* خط نوری متحرک روی آیتم چت */
 .ci::after {
     content: '';
     position: absolute;
@@ -554,7 +652,7 @@ a, button, label, input {
     animation: shimmerSweep 8s ease-in-out 3s infinite;
 }
 
-/* جای آواتار — نقطه داخلش قرار میگیره */
+/* جای عکس آواتار */
 .ci-av-wrap {
     position: relative;
     flex-shrink: 0;
@@ -562,6 +660,7 @@ a, button, label, input {
     height: 52px;
 }
 
+/* عکس آواتار */
 .ci-av {
     width: 52px;
     height: 52px;
@@ -571,12 +670,14 @@ a, button, label, input {
     display: block;
 }
 
+/* متن چت (اسم + پیام) */
 .ci-body {
     flex: 1;
     min-width: 0;
     overflow: hidden;
 }
 
+/* خط اسم */
 .ci-top {
     display: flex;
     justify-content: space-between;
@@ -589,6 +690,7 @@ a, button, label, input {
     font-size: .93rem;
 }
 
+/* متن پیام — اول مخفیه، بعد ظاهر میشه */
 .ci-msg {
     font-size: .82rem;
     color: var(--tx3);
@@ -600,6 +702,7 @@ a, button, label, input {
     transform: translateY(-20px);
 }
 
+/* سه نقطه "در حال تایپ..." */
 .ci-typing {
     display: flex;
     gap: 4px;
@@ -620,6 +723,7 @@ a, button, label, input {
 .ci-typing span:nth-child(2) { animation-delay: .2s; }
 .ci-typing span:nth-child(3) { animation-delay: .4s; }
 
+/* بخش سمت چپ آیتم چت */
 .ci-right {
     position: relative;
     flex-shrink: 0;
@@ -629,12 +733,14 @@ a, button, label, input {
     gap: 4px;
 }
 
+/* جای عدد نخوانده */
 .badge-wrap {
     position: relative;
     height: 0;
     width: 22px;
 }
 
+/* دایره آبی عدد پیام نخوانده */
 .badge-wrap .unread {
     position: absolute;
     top: 0;
@@ -656,16 +762,17 @@ a, button, label, input {
 
 
 /* ═══════════════════════════════════════════
-   ★ تغییر ۲: انیمیشن چت‌ها — برعکس شدن ترتیب
-   بهناز = ۶۰ ثانیه (اول)
-   نازنین = ۱۰۵ ثانیه (دوم)
-   نیکا = ۱۵۵ ثانیه (آخر)
+   انیمیشن آیتم‌های چت
+   هر چت با تاخیر ظاهر میشه:
+   نیکا = ۶۰ ثانیه
+   نازنین = ۱۰۵ ثانیه
+   بهناز = ۱۵۵ ثانیه
    ═══════════════════════════════════════════ */
 
 /* حالت اولیه: مخفی */
-.ci-beh,
+.ci-nika,
 .ci-naz,
-.ci-nika {
+.ci-beh {
     max-height: 0;
     opacity: 0;
     padding: 0 8px;
@@ -673,39 +780,36 @@ a, button, label, input {
     transform: translateY(-50px);
 }
 
-/* ★ بهناز اول ظاهر میشه (۶۰ ثانیه) */
-.ci-beh { animation: ciSlideIn .7s cubic-bezier(.4,0,.2,1) 58s both, ciGlow 2s ease 60s; }
-.ci-naz { animation: ciSlideIn .7s cubic-bezier(.4,0,.2,1) 103s both, ciGlow 2s ease 105s; }
-.ci-nika { animation: ciSlideIn .7s cubic-bezier(.4,0,.2,1) 153s both, ciGlow 2s ease 155s; }
+.ci-nika { animation: ciSlideIn .7s cubic-bezier(.4,0,.2,1) 58s both, ciGlow 2s ease 60s; }
+.ci-naz  { animation: ciSlideIn .7s cubic-bezier(.4,0,.2,1) 103s both, ciGlow 2s ease 105s; }
+.ci-beh  { animation: ciSlideIn .7s cubic-bezier(.4,0,.2,1) 153s both, ciGlow 2s ease 155s; }
 
-/* ★ پیام‌های بهناز */
-.m-beh { animation: showMsg .6s cubic-bezier(.4,0,.2,1) 60s forwards; }
+/* متن پیام‌ها ظاهر میشن */
+.m-nika-1 { animation: showMsg .6s cubic-bezier(.4,0,.2,1) 60s forwards; }
+.m-nika-2 { animation: showMsg .6s cubic-bezier(.4,0,.2,1) 75s forwards; }
+.m-naz-1  { animation: showMsg .6s cubic-bezier(.4,0,.2,1) 105s forwards; }
+.m-naz-2  { animation: showMsg .6s cubic-bezier(.4,0,.2,1) 125s forwards; }
+.m-beh    { animation: showMsg .6s cubic-bezier(.4,0,.2,1) 155s forwards; }
 
-/* ★ پیام‌های نازنین */
-.m-naz-1 { animation: showMsg .6s cubic-bezier(.4,0,.2,1) 105s forwards; }
-.m-naz-2 { animation: showMsg .6s cubic-bezier(.4,0,.2,1) 125s forwards; }
+/* بج عدد نخوانده ظاهر میشه */
+.b-nika-1 { animation: badgePop .4s ease 60s forwards; }
+.b-nika-2 { animation: badgePop .35s ease 75s forwards; }
+.b-naz-1  { animation: badgePop .4s ease 105s forwards; }
+.b-naz-2  { animation: badgePop .35s ease 125s forwards; }
+.b-beh    { animation: badgePop .4s ease 155s forwards; }
 
-/* ★ پیام‌های نیکا */
-.m-nika-1 { animation: showMsg .6s cubic-bezier(.4,0,.2,1) 155s forwards; }
-.m-nika-2 { animation: showMsg .6s cubic-bezier(.4,0,.2,1) 170s forwards; }
-
-/* ★ بج‌ها */
-.b-beh { animation: badgePop .4s ease 60s forwards; }
-.b-naz-1 { animation: badgePop .4s ease 105s forwards; }
-.b-naz-2 { animation: badgePop .35s ease 125s forwards; }
-.b-nika-1 { animation: badgePop .4s ease 155s forwards; }
-.b-nika-2 { animation: badgePop .35s ease 170s forwards; }
-
-/* ★ تایپینگ‌ها */
-.t-beh { animation: typingShow 3s ease 58.5s both; }
-.t-naz-1 { animation: typingShow 3s ease 103.5s both; }
-.t-naz-2 { animation: typingShow 3s ease 123.5s both; }
-.t-nika-1 { animation: typingShow 3s ease 153.5s both; }
-.t-nika-2 { animation: typingShow 3s ease 168.5s both; }
+/* نقطه‌های "در حال تایپ..." نمایش داده میشن */
+.t-nika-1 { animation: typingShow 3s ease 58.5s both; }
+.t-nika-2 { animation: typingShow 3s ease 73.5s both; }
+.t-naz-1  { animation: typingShow 3s ease 103.5s both; }
+.t-naz-2  { animation: typingShow 3s ease 123.5s both; }
+.t-beh    { animation: typingShow 3s ease 153.5s both; }
 
 
 /* ═══════════════════════════════════════════
-   اعلان‌ها — همزمان با پیام برعکس شده
+   اعلان‌ها (نوتیفیکیشن پیام جدید)
+   همزمان با پیام مربوطه ظاهر میشن
+   فقط یک بار — تکرار نمیشن
    ═══════════════════════════════════════════ */
 .notif {
     position: fixed;
@@ -747,22 +851,43 @@ a, button, label, input {
 }
 
 .notif-body { flex: 1; min-width: 0; }
-.notif-t { font-weight: 700; font-size: .86rem; margin-bottom: 1px; }
-.notif-s { font-size: .76rem; color: var(--tx3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-/* ★ اعلان بهناز — اول (۶۰ ثانیه) */
-.notif-beh { animation: notifOnce 4s ease 60s both; }
-.notif-beh .notif-ic svg { animation: bellRing .8s ease 60.2s both; }
+.notif-t {
+    font-weight: 700;
+    font-size: .86rem;
+    margin-bottom: 1px;
+}
 
-/* ★ اعلان نازنین — دوم (۱۰۵ ثانیه) */
+.notif-s {
+    font-size: .76rem;
+    color: var(--tx3);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* اعلان نیکا — همزمان با پیام نیکا (۶۰ ثانیه) */
+.notif-nika { animation: notifOnce 4s ease 60s both; }
+.notif-nika .notif-ic svg { animation: bellRing .8s ease 60.2s both; }
+
+/* اعلان نازنین — همزمان با پیام نازنین (۱۰۵ ثانیه) */
 .notif-naz { animation: notifOnce 4s ease 105s both; }
 .notif-naz .notif-ic svg { animation: bellRing .8s ease 105.2s both; }
 
-/* ★ اعلان نیکا — آخر (۱۵۵ ثانیه) */
-.notif-nika { animation: notifOnce 4s ease 155s both; }
-.notif-nika .notif-ic svg { animation: bellRing .8s ease 155.2s both; }
+/* اعلان بهناز — همزمان با پیام بهناز (۱۵۵ ثانیه) */
+.notif-beh { animation: notifOnce 4s ease 155s both; }
+.notif-beh .notif-ic svg { animation: bellRing .8s ease 155.2s both; }
 
+/* وقتی شیت اشتراک اصلی بازه، اعلان‌های پیام مخفی بشن */
 #subTog:checked ~ .notif {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    animation: none !important;
+    z-index: -1 !important;
+}
+
+/* وقتی شیت "کاربرهای بیشتر" بازه، اعلان‌های پیام مخفی بشن */
+#moreTog:checked ~ .notif {
     opacity: 0 !important;
     pointer-events: none !important;
     animation: none !important;
@@ -771,7 +896,80 @@ a, button, label, input {
 
 
 /* ═══════════════════════════════════════════
-   خط "امروز"
+   اعلان "اشتراک ندارید"
+   فقط وقتی آیتم "+" زده بشه ظاهر میشه
+   بعد از ۱.۵ ثانیه محو میشه و شیت باز میشه
+   ═══════════════════════════════════════════ */
+.more-notif {
+    position: fixed;
+    top: 12px;
+    left: 50%;
+    width: 92%;
+    max-width: 400px;
+    background: var(--card);
+    border-radius: 20px;
+    padding: 12px 14px;
+    box-shadow: 0 8px 32px rgba(0,0,0,.18);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translate(-50%, -130%);
+    opacity: 0;
+    z-index: 8002;
+    pointer-events: none;
+}
+
+/* آیکون اخطار نارنجی */
+.more-notif-ic {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #ff3b30, #ff6b6b);
+}
+
+.more-notif-ic svg {
+    width: 20px;
+    height: 20px;
+    stroke: #fff;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.more-notif-body { flex: 1; min-width: 0; }
+
+.more-notif-t {
+    font-weight: 700;
+    font-size: .86rem;
+    margin-bottom: 1px;
+}
+
+.more-notif-s {
+    font-size: .76rem;
+    color: var(--tx3);
+}
+
+/* وقتی moreTog زده شد، اعلان انیمیشن اجرا کنه */
+#moreTog:checked ~ .more-notif {
+    animation: moreNotifAnim 3s ease both;
+}
+
+/* اگه شیت اصلی همزمان باز شد، اعلان "بیشتر" مخفی بشه */
+#subTog:checked ~ .more-notif {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    animation: none !important;
+    z-index: -1 !important;
+}
+
+
+/* ═══════════════════════════════════════════
+   خط جداکننده "امروز"
    ═══════════════════════════════════════════ */
 .today-sep {
     display: flex;
@@ -800,7 +998,8 @@ a, button, label, input {
 
 
 /* ═══════════════════════════════════════════
-   بنر اشتراک
+   بنر اشتراک ویژه
+   زیر استوری‌ها — با دکمه "خرید"
    ═══════════════════════════════════════════ */
 .sub-banner {
     display: flex;
@@ -833,11 +1032,24 @@ a, button, label, input {
     flex-shrink: 0;
 }
 
-.sub-banner-icon svg { width: 18px; height: 18px; fill: #fff; }
+.sub-banner-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: #fff;
+}
 
 .sub-banner-text { flex: 1; min-width: 0; }
-.sub-banner-title { font-size: .82rem; font-weight: 700; color: var(--tx2); }
-.sub-banner-sub { font-size: .7rem; color: var(--tx3); }
+
+.sub-banner-title {
+    font-size: .82rem;
+    font-weight: 700;
+    color: var(--tx2);
+}
+
+.sub-banner-sub {
+    font-size: .7rem;
+    color: var(--tx3);
+}
 
 .sub-banner-btn {
     padding: 5px 14px;
@@ -851,8 +1063,12 @@ a, button, label, input {
 
 
 /* ═══════════════════════════════════════════
-   شیت اشتراک
+   شیت اشتراک اصلی (برای پیام دادن)
+   از پایین بالا میاد
+   با قیمت، امکانات، و دکمه پرداخت
    ═══════════════════════════════════════════ */
+
+/* پس‌زمینه تیره پشت شیت اصلی */
 .sh-bg {
     position: fixed;
     inset: 0;
@@ -872,6 +1088,7 @@ a, button, label, input {
     transition-delay: .5s;
 }
 
+/* شیت اصلی — از پایین بالا میاد */
 .sheet {
     position: fixed;
     bottom: -100%;
@@ -887,12 +1104,38 @@ a, button, label, input {
     transition: bottom .4s cubic-bezier(.32,.72,0,1);
 }
 
-#subTog:checked ~ .sheet { bottom: 0; transition-delay: .5s; }
+#subTog:checked ~ .sheet {
+    bottom: 0;
+    transition-delay: .5s;
+}
 
-.sh-h { width: 36px; height: 5px; background: var(--dv); border-radius: 3px; margin: 0 auto 18px; }
-.sh-t { font-size: 1.1rem; font-weight: 800; text-align: center; margin-bottom: 4px; }
-.sh-s { font-size: .8rem; color: var(--tx3); text-align: center; margin-bottom: 14px; line-height: 1.6; }
+/* دستگیره بالای شیت */
+.sh-h {
+    width: 36px;
+    height: 5px;
+    background: var(--dv);
+    border-radius: 3px;
+    margin: 0 auto 18px;
+}
 
+/* عنوان شیت */
+.sh-t {
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+/* توضیح شیت — متن اصلی: برای پیام دادن */
+.sh-s {
+    font-size: .8rem;
+    color: var(--tx3);
+    text-align: center;
+    margin-bottom: 14px;
+    line-height: 1.6;
+}
+
+/* کادر قیمت و اشتراک */
 .sub-c {
     border: 2px solid var(--bl);
     border-radius: var(--r2);
@@ -918,9 +1161,18 @@ a, button, label, input {
     justify-content: center;
 }
 
-.sub-ci svg { width: 18px; height: 18px; fill: #fff; }
-.sub-cn { font-weight: 700; font-size: .88rem; }
+.sub-ci svg {
+    width: 18px;
+    height: 18px;
+    fill: #fff;
+}
 
+.sub-cn {
+    font-weight: 700;
+    font-size: .88rem;
+}
+
+/* قیمت با نور متحرک سبز */
 .sub-p {
     font-weight: 900;
     font-size: 1.1rem;
@@ -931,8 +1183,21 @@ a, button, label, input {
     animation: shimmer 3s linear infinite;
 }
 
-.sub-fs { display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
-.sub-f { display: flex; align-items: center; gap: 7px; font-size: .82rem; color: var(--tx2); }
+/* لیست امکانات اشتراک */
+.sub-fs {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 14px;
+}
+
+.sub-f {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: .82rem;
+    color: var(--tx2);
+}
 
 .sub-f svg {
     width: 15px;
@@ -945,6 +1210,7 @@ a, button, label, input {
     flex-shrink: 0;
 }
 
+/* دکمه پرداخت */
 .btn-pay {
     display: block;
     width: 100%;
@@ -965,6 +1231,7 @@ a, button, label, input {
 
 .btn-pay:active { transform: scale(.98); }
 
+/* دکمه انصراف شیت */
 .close-sh {
     display: block;
     width: 100%;
@@ -986,7 +1253,69 @@ a, button, label, input {
 
 
 /* ═══════════════════════════════════════════
-   صفحه خالی
+   شیت دوم: دیدن کاربرهای بیشتر
+   فقط وقتی آیتم "+" زده بشه باز میشه
+   توضیح: "برای دیدن کاربرهای بیشتر اشتراک تهیه کنید"
+   تاخیر ۱.۸ ثانیه — بعد از اعلان "اشتراک ندارید"
+   ═══════════════════════════════════════════ */
+
+/* پس‌زمینه تیره پشت شیت دوم */
+.more-sh-bg {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    z-index: 5002;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .3s, visibility .3s;
+    cursor: pointer;
+}
+
+/* وقتی moreTog زده شد، پس‌زمینه تیره نشون بده — با تاخیر */
+#moreTog:checked ~ .more-sh-bg {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 1.8s;
+}
+
+/* شیت دوم — از پایین بالا میاد */
+.more-sheet {
+    position: fixed;
+    bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    background: var(--card);
+    border-top-left-radius: var(--r3);
+    border-top-right-radius: var(--r3);
+    padding: 10px 20px 28px;
+    z-index: 5003;
+    transition: bottom .4s cubic-bezier(.32,.72,0,1);
+}
+
+/* وقتی moreTog زده شد، شیت بالا بیاد — با تاخیر بعد از اعلان */
+#moreTog:checked ~ .more-sheet {
+    bottom: 0;
+    transition-delay: 1.8s;
+}
+
+/* توضیح شیت دوم — متن متفاوت: دیدن کاربرهای بیشتر */
+.more-sh-s {
+    font-size: .8rem;
+    color: var(--tx3);
+    text-align: center;
+    margin-bottom: 14px;
+    line-height: 1.6;
+}
+
+
+/* ═══════════════════════════════════════════
+   صفحه خالی (وقتی هنوز چتی نیست)
+   حباب چت + سه نقطه + قلب + حلقه‌ها
+   بعد از ۵۷ ثانیه محو میشه
    ═══════════════════════════════════════════ */
 .empty-state {
     position: absolute;
@@ -1044,15 +1373,50 @@ a, button, label, input {
     border-radius: 0 0 3px 0;
 }
 
-.eb-dot { width: 8px; height: 8px; border-radius: 50%; }
-.eb-dot:nth-child(1) { background: #667eea; opacity: .7; animation: dotWave 1.4s ease-in-out infinite; }
-.eb-dot:nth-child(2) { background: #764ba2; opacity: .5; animation: dotWave 1.4s ease-in-out .2s infinite; }
-.eb-dot:nth-child(3) { background: #af52de; opacity: .3; animation: dotWave 1.4s ease-in-out .4s infinite; }
+.eb-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
 
-.empty-ring { position: absolute; border-radius: 50%; border: 1.5px dashed rgba(102,126,234,.18); }
-.empty-ring.or1 { inset: -4px; animation: orbitSpin 10s linear infinite; }
-.empty-ring.or2 { inset: -12px; animation: orbitSpin 16s linear infinite reverse; }
-.empty-ring.or3 { inset: -20px; animation: orbitSpin 22s linear infinite; }
+.eb-dot:nth-child(1) {
+    background: #667eea;
+    opacity: .7;
+    animation: dotWave 1.4s ease-in-out infinite;
+}
+
+.eb-dot:nth-child(2) {
+    background: #764ba2;
+    opacity: .5;
+    animation: dotWave 1.4s ease-in-out .2s infinite;
+}
+
+.eb-dot:nth-child(3) {
+    background: #af52de;
+    opacity: .3;
+    animation: dotWave 1.4s ease-in-out .4s infinite;
+}
+
+.empty-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(102,126,234,.18);
+}
+
+.empty-ring.or1 {
+    inset: -4px;
+    animation: orbitSpin 10s linear infinite;
+}
+
+.empty-ring.or2 {
+    inset: -12px;
+    animation: orbitSpin 16s linear infinite reverse;
+}
+
+.empty-ring.or3 {
+    inset: -20px;
+    animation: orbitSpin 22s linear infinite;
+}
 
 .empty-pulse {
     position: absolute;
@@ -1062,23 +1426,69 @@ a, button, label, input {
     animation: ringPulse 3s ease-in-out infinite;
 }
 
-.empty-hearts { position: absolute; inset: 0; }
-.empty-heart { position: absolute; left: 50%; bottom: 40%; width: 14px; height: 14px; }
-.empty-heart svg { width: 100%; height: 100%; fill: var(--pk); stroke: none; }
+.empty-hearts {
+    position: absolute;
+    inset: 0;
+}
+
+.empty-heart {
+    position: absolute;
+    left: 50%;
+    bottom: 40%;
+    width: 14px;
+    height: 14px;
+}
+
+.empty-heart svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--pk);
+    stroke: none;
+}
+
 .empty-heart.h1 { animation: heartFloat1 4s ease-in-out infinite; }
 .empty-heart.h2 { animation: heartFloat2 4.5s ease-in-out infinite 1s; }
 .empty-heart.h3 { animation: heartFloat3 5s ease-in-out infinite 2s; }
 
-.empty-title { font-size: 1.05rem; font-weight: 700; color: var(--tx2); margin-bottom: 6px; }
-.empty-sub { font-size: .82rem; color: var(--tx3); line-height: 1.7; max-width: 240px; margin-bottom: 18px; }
+.empty-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--tx2);
+    margin-bottom: 6px;
+}
 
-.empty-dots { display: flex; gap: 8px; align-items: center; }
-.empty-dots span { width: 7px; height: 7px; border-radius: 50%; background: var(--acc); }
+.empty-sub {
+    font-size: .82rem;
+    color: var(--tx3);
+    line-height: 1.7;
+    max-width: 240px;
+    margin-bottom: 18px;
+}
+
+.empty-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.empty-dots span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--acc);
+}
+
 .empty-dots span:nth-child(1) { animation: dotWave 1.4s ease-in-out infinite; }
 .empty-dots span:nth-child(2) { animation: dotWave 1.4s ease-in-out .2s infinite; }
 .empty-dots span:nth-child(3) { animation: dotWave 1.4s ease-in-out .4s infinite; }
 
-.ep { position: absolute; border-radius: 50%; pointer-events: none; }
+/* ذرات کوچک اطراف آیکون صفحه خالی */
+.ep {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
 .ep1 { left: 10%; top: 20%; width: 4px; height: 4px; background: rgba(102,126,234,.35); animation: epF1 5s ease-in-out infinite; }
 .ep2 { left: 85%; top: 25%; width: 3px; height: 3px; background: rgba(118,75,162,.3); animation: epF2 6s ease-in-out infinite .5s; }
 .ep3 { left: 20%; top: 80%; width: 5px; height: 5px; background: rgba(52,199,89,.25); animation: epF3 7s ease-in-out infinite 1s; }
@@ -1086,52 +1496,64 @@ a, button, label, input {
 .ep5 { left: 50%; top: 10%; width: 4px; height: 4px; background: rgba(255,149,0,.25); animation: epF2 6.5s ease-in-out infinite 2s; }
 .ep6 { left: 40%; top: 85%; width: 3px; height: 3px; background: rgba(90,200,250,.3); animation: epF3 5s ease-in-out infinite .8s; }
 
+
+/* ═══════════════════════════════════════════
+   هماهنگی شیت‌ها: اگه هر دو شیت باز بشن
+   شیت دوم (کاربرهای بیشتر) بالاتر نمایش داده میشه
+   ═══════════════════════════════════════════ */
+
+/* وقتی شیت دوم بازه، شیت اول و پس‌زمینه‌اش مخفی بشن */
+#moreTog:checked ~ .sheet {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#moreTog:checked ~ .sh-bg {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* وقتی شیت اول بازه، شیت دوم و پس‌زمینه‌اش مخفی بشن */
+#subTog:checked ~ .more-sheet {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#subTog:checked ~ .more-sh-bg {
+    opacity: 0;
+    pointer-events: none;
+}
+
     </style>
 </head>
 <body>
 
-    <!-- ذرات پس‌زمینه -->
+    <!-- ═══ ذرات رنگی پس‌زمینه: ۱۲ ذره که آرام حرکت می‌کنن ═══ -->
     <div class="bg-particles">
-        <div class="bp"></div><div class="bp"></div><div class="bp"></div>
-        <div class="bp"></div><div class="bp"></div><div class="bp"></div>
-        <div class="bp"></div><div class="bp"></div><div class="bp"></div>
-        <div class="bp"></div><div class="bp"></div><div class="bp"></div>
+        <div class="bp"></div>
+        <div class="bp"></div>
+        <div class="bp"></div>
+        <div class="bp"></div>
+        <div class="bp"></div>
+        <div class="bp"></div>
+        <div class="bp"></div>
+        <div class="bp"></div>
+        <div class="bp"></div>
+        <div class="bp"></div>
+        <div class="bp"></div>
+        <div class="bp"></div>
     </div>
 
-    <!-- دکمه مخفی شیت -->
+    <!-- ═══ دکمه‌های مخفی: کنترل باز/بسته شدن شیت‌ها ═══ -->
+    <!-- subTog = شیت اشتراک اصلی (پیام دادن به کاربران) -->
     <input type="checkbox" class="css-tog" id="subTog">
+    <!-- moreTog = شیت دوم (دیدن کاربرهای بیشتر) — وقتی آیتم "+" زده بشه -->
+    <input type="checkbox" class="css-tog" id="moreTog">
 
-    <!-- ═══ اعلان‌ها — برعکس شده ═══ -->
 
-    <!-- ★ اعلان بهناز — اول (۶۰ ثانیه) -->
-    <div class="notif notif-beh">
-        <div class="notif-ic">
-            <svg viewBox="0 0 24 24">
-                <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                <path d="M13.73 21a2 2 0 01-3.46 0"/>
-            </svg>
-        </div>
-        <div class="notif-body">
-            <div class="notif-t">بهناز</div>
-            <div class="notif-s">تنهام دیگ بیا مامانم الان میاد</div>
-        </div>
-    </div>
+    <!-- ═══ اعلان‌های پیام جدید: همزمان با پیام مربوطه ظاهر میشن ═══ -->
 
-    <!-- ★ اعلان نازنین — دوم (۱۰۵ ثانیه) -->
-    <div class="notif notif-naz">
-        <div class="notif-ic">
-            <svg viewBox="0 0 24 24">
-                <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                <path d="M13.73 21a2 2 0 01-3.46 0"/>
-            </svg>
-        </div>
-        <div class="notif-body">
-            <div class="notif-t">نازنین</div>
-            <div class="notif-s">سلام</div>
-        </div>
-    </div>
-
-    <!-- ★ اعلان نیکا — آخر (۱۵۵ ثانیه) -->
+    <!-- اعلان نیکا — ظاهر شدن همزمان با پیام نیکا (۶۰ ثانیه) -->
     <div class="notif notif-nika">
         <div class="notif-ic">
             <svg viewBox="0 0 24 24">
@@ -1145,30 +1567,62 @@ a, button, label, input {
         </div>
     </div>
 
-    <!-- ═══ هدر — عنوان طبیعی‌تر ═══ -->
-    <header class="app-hdr">
-        <div class="hdr-left"></div>
-        <div class="hdr-center">
-            <!-- ★ عنوان: بنفش ملایم + بکگراند گرد — چسبیده به هدر -->
-            <span class="hdr-title">دوست‌یابی</span>
+    <!-- اعلان نازنین — ظاهر شدن همزمان با پیام نازنین (۱۰۵ ثانیه) -->
+    <div class="notif notif-naz">
+        <div class="notif-ic">
+            <svg viewBox="0 0 24 24">
+                <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 01-3.46 0"/>
+            </svg>
         </div>
-        <div class="hdr-right">
-            <label for="subTog" class="cart-btn" title="خرید اشتراک">
-                <svg viewBox="0 0 24 24">
-                    <circle cx="9" cy="21" r="1"/>
-                    <circle cx="20" cy="21" r="1"/>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
-                </svg>
-                <span class="cart-badge">!</span>
-            </label>
+        <div class="notif-body">
+            <div class="notif-t">نازنین</div>
+            <div class="notif-s">سلام</div>
         </div>
-    </header>
+    </div>
 
-    <!-- ═══ شیت اشتراک ═══ -->
+    <!-- اعلان بهناز — ظاهر شدن همزمان با پیام بهناز (۱۵۵ ثانیه) -->
+    <div class="notif notif-beh">
+        <div class="notif-ic">
+            <svg viewBox="0 0 24 24">
+                <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 01-3.46 0"/>
+            </svg>
+        </div>
+        <div class="notif-body">
+            <div class="notif-t">بهناز</div>
+            <div class="notif-s">تنهام دیگ بیا مامانم الان میاد</div>
+        </div>
+    </div>
+
+
+    <!-- ═══ اعلان "اشتراک ندارید" — فقط با آیتم "+" ظاهر میشه ═══ -->
+    <!-- ابتدا اعلان میاد بالا (۱.۵ ثانیه) و بعد شیت دوم باز میشه -->
+    <div class="more-notif">
+        <div class="more-notif-ic">
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+        </div>
+        <div class="more-notif-body">
+            <div class="more-notif-t">اشتراک ندارید</div>
+            <div class="more-notif-s">برای دسترسی کامل اشتراک تهیه کنید</div>
+        </div>
+    </div>
+
+
+    <!-- ═══ شیت اشتراک اصلی: متن "برای پیام دادن به کاربران..." ═══ -->
+
+    <!-- پس‌زمینه تیره پشت شیت — کلیک روش شیت رو می‌بنده -->
     <label for="subTog" class="sh-bg"></label>
+
+    <!-- خود شیت: قیمت + امکانات + دکمه پرداخت -->
     <div class="sheet">
         <div class="sh-h"></div>
         <div class="sh-t">اشتراک ویژه</div>
+        <!-- توضیح: برای پیام دادن به کاربران و استفاده کامل -->
         <div class="sh-s">برای پیام دادن به کاربران و استفاده کامل، اشتراک تهیه کنید</div>
         <div class="sub-c">
             <div class="sub-cl">
@@ -1201,33 +1655,115 @@ a, button, label, input {
         <label for="subTog" class="close-sh">انصراف</label>
     </div>
 
-    <!-- ═══ محتوای اصلی ═══ -->
+
+    <!-- ═══ شیت دوم: "دیدن کاربرهای بیشتر" — فقط با آیتم "+" ═══ -->
+
+    <!-- پس‌زمینه تیره پشت شیت دوم — کلیک روش شیت رو می‌بنده -->
+    <label for="moreTog" class="more-sh-bg"></label>
+
+    <!-- شیت دوم: متن متفاوت — برای دیدن کاربرهای بیشتر -->
+    <div class="more-sheet">
+        <div class="sh-h"></div>
+        <div class="sh-t">اشتراک ویژه</div>
+        <!-- توضیح: برای دیدن کاربرهای بیشتر — متن متفاوت از شیت اصلی -->
+        <div class="more-sh-s">برای دیدن کاربرهای بیشتر اشتراک تهیه کنید</div>
+        <div class="sub-c">
+            <div class="sub-cl">
+                <div class="sub-ci">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="sub-cn">اشتراک کامل ماهانه</div>
+                </div>
+            </div>
+            <div class="sub-p">۴۹,۰۰۰ تومان</div>
+        </div>
+        <div class="sub-fs">
+            <div class="sub-f">
+                <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+                مشاهده تمام کاربران
+            </div>
+            <div class="sub-f">
+                <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+                پیام نامحدود به همه کاربران
+            </div>
+            <div class="sub-f">
+                <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+                اولویت در جستجو و ویترین
+            </div>
+        </div>
+        <a href="https://your-payment-link.com" class="btn-pay">پرداخت و فعال‌سازی</a>
+        <label for="moreTog" class="close-sh">انصراف</label>
+    </div>
+
+
+    <!-- ═══ محتوای اصلی صفحه ═══ -->
     <div class="page active">
 
-        <!-- ★ نوار استوری‌ها — اسکرول از چپ به راست (برعکس) -->
+        <!-- ═══ ردیف عنوان صفحه: متن لوکس "دوست‌یابی" + آیکون سبد خرید ═══ -->
+        <!-- جایگزین هدر قبلی — چسبیده به صفحه اصلی، شناور نیست -->
+        <div class="page-title-row">
+            <span class="page-title">دوست‌یابی</span>
+            <label for="subTog" class="cart-btn" title="خرید اشتراک">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="9" cy="21" r="1"/>
+                    <circle cx="20" cy="21" r="1"/>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+                </svg>
+                <span class="cart-badge">!</span>
+            </label>
+        </div>
+
+        <!-- ═══ نوار استوری‌ها: ۷ نفر + آیتم "+" ═══ -->
+        <!-- اسکرول برعکس: از چپ به راست (direction: ltr) -->
         <div class="stories-wrap">
             <div class="stories-bar">
 
-                <!-- محمد — حلقه خاکستری، نقطه سبز -->
+                <!-- استوری نیکا — حلقه رنگی یعنی استوری داره -->
+                <!-- نقطه سبز = آنلاین (بدون چشمک، ثابت) -->
                 <label for="subTog" class="story-item">
-                    <div class="story-ring no-story">
+                    <div class="story-ring">
                         <div class="story-inner">
-                            <img src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/mohammad.jpg">
+                            <img src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/nika.jpg">
                         </div>
                     </div>
                     <span class="sd on"></span>
-                    <div class="story-name">محمد</div>
+                    <div class="story-name">نیکا</div>
                 </label>
 
-                <!-- سارا — حلقه خاکستری، نقطه خاکستری -->
+                <!-- استوری بهناز — حلقه رنگی، نقطه سبز -->
+                <label for="subTog" class="story-item">
+                    <div class="story-ring">
+                        <div class="story-inner">
+                            <img src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/behnaz.jpg">
+                        </div>
+                    </div>
+                    <span class="sd on"></span>
+                    <div class="story-name">بهناز</div>
+                </label>
+
+                <!-- استوری نازنین — حلقه رنگی، نقطه سبز -->
+                <label for="subTog" class="story-item">
+                    <div class="story-ring">
+                        <div class="story-inner">
+                            <img src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/nazanin.jpg">
+                        </div>
+                    </div>
+                    <span class="sd on"></span>
+                    <div class="story-name">نازنین</div>
+                </label>
+
+                <!-- علیرضا — حلقه خاکستری (no-story)، نقطه خاکستری -->
                 <label for="subTog" class="story-item">
                     <div class="story-ring no-story">
                         <div class="story-inner">
-                            <img src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/sara.jpg">
+                            <img src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/alireza.jpg">
                         </div>
                     </div>
                     <span class="sd off"></span>
-                    <div class="story-name">سارا</div>
+                    <div class="story-name">علیرضا</div>
                 </label>
 
                 <!-- مریم — حلقه خاکستری، نقطه سبز -->
@@ -1241,62 +1777,55 @@ a, button, label, input {
                     <div class="story-name">مریم</div>
                 </label>
 
-                <!-- علیرضا — حلقه خاکستری، نقطه خاکستری -->
+                <!-- سارا — حلقه خاکستری، نقطه خاکستری -->
                 <label for="subTog" class="story-item">
                     <div class="story-ring no-story">
                         <div class="story-inner">
-                            <img src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/alireza.jpg">
+                            <img src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/sara.jpg">
                         </div>
                     </div>
                     <span class="sd off"></span>
-                    <div class="story-name">علیرضا</div>
+                    <div class="story-name">سارا</div>
                 </label>
 
-                <!-- نازنین — حلقه رنگی، نقطه سبز -->
+                <!-- محمد — حلقه خاکستری، نقطه سبز -->
                 <label for="subTog" class="story-item">
-                    <div class="story-ring">
+                    <div class="story-ring no-story">
                         <div class="story-inner">
-                            <img src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/nazanin.jpg">
+                            <img src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/mohammad.jpg">
                         </div>
                     </div>
                     <span class="sd on"></span>
-                    <div class="story-name">نازنین</div>
+                    <div class="story-name">محمد</div>
                 </label>
 
-                <!-- بهناز — حلقه رنگی، نقطه سبز -->
-                <label for="subTog" class="story-item">
-                    <div class="story-ring">
-                        <div class="story-inner">
-                            <img src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/behnaz.jpg">
+                <!-- ═══ آیتم "+" — انتهای اسکرول ═══ -->
+                <!-- دایره نقطه‌چین با علامت مثبت -->
+                <!-- کلیک = اعلان "اشتراک ندارید" + شیت "دیدن کاربرهای بیشتر" -->
+                <label for="moreTog" class="story-item story-plus">
+                    <div class="story-ring plus-ring">
+                        <div class="story-inner plus-inner">
+                            <span class="plus-icon">+</span>
                         </div>
                     </div>
-                    <span class="sd on"></span>
-                    <div class="story-name">بهناز</div>
-                </label>
-
-                <!-- نیکا — حلقه رنگی، نقطه سبز -->
-                <label for="subTog" class="story-item">
-                    <div class="story-ring">
-                        <div class="story-inner">
-                            <img src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/nika.jpg">
-                        </div>
-                    </div>
-                    <span class="sd on"></span>
-                    <div class="story-name">نیکا</div>
+                    <div class="story-name">بیشتر</div>
                 </label>
 
             </div>
         </div>
 
-        <!-- ═══ لیست چت — ★ برعکس شده ═══ -->
+        <!-- ═══ لیست چت‌ها ═══ -->
         <div class="chat-list">
 
-            <!-- صفحه خالی -->
+            <!-- صفحه خالی: حباب + قلب + متن خوش‌آمد — بعد ۵۷ ثانیه محو میشه -->
             <div class="empty-state">
                 <div class="empty-illustration">
-                    <div class="ep ep1"></div><div class="ep ep2"></div>
-                    <div class="ep ep3"></div><div class="ep ep4"></div>
-                    <div class="ep ep5"></div><div class="ep ep6"></div>
+                    <div class="ep ep1"></div>
+                    <div class="ep ep2"></div>
+                    <div class="ep ep3"></div>
+                    <div class="ep ep4"></div>
+                    <div class="ep ep5"></div>
+                    <div class="ep ep6"></div>
                     <div class="empty-ring or1"></div>
                     <div class="empty-ring or2"></div>
                     <div class="empty-ring or3"></div>
@@ -1308,22 +1837,32 @@ a, button, label, input {
                     </div>
                     <div class="empty-hearts">
                         <div class="empty-heart h1">
-                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                            </svg>
                         </div>
                         <div class="empty-heart h2">
-                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                            </svg>
                         </div>
                         <div class="empty-heart h3">
-                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
                 <div class="empty-title">به Matcha خوش آمدید</div>
                 <div class="empty-sub">هنوز گفتگویی ندارید. برای آشنایی با افراد جدید آماده شوید</div>
-                <div class="empty-dots"><span></span><span></span><span></span></div>
+                <div class="empty-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
 
-            <!-- بنر اشتراک -->
+            <!-- بنر اشتراک ویژه — کلیک روش شیت اصلی رو باز می‌کنه -->
             <label for="subTog" class="sub-banner">
                 <div class="sub-banner-icon">
                     <svg viewBox="0 0 24 24">
@@ -1337,32 +1876,39 @@ a, button, label, input {
                 <div class="sub-banner-btn">خرید</div>
             </label>
 
-            <!-- خط امروز -->
-            <div class="today-sep"><span>امروز</span></div>
+            <!-- خط جداکننده "امروز" — ظاهر شدن بعد ۵۷ ثانیه -->
+            <div class="today-sep">
+                <span>امروز</span>
+            </div>
 
-            <!-- ★ بهناز — اول ظاهر میشه (۶۰ ثانیه) -->
-            <label for="subTog" class="ci ci-beh">
+            <!-- ═══ چت نیکا — ظاهر شدن بعد ۵۸ ثانیه ═══ -->
+            <label for="subTog" class="ci ci-nika">
                 <div class="ci-av-wrap">
-                    <img class="ci-av" src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/behnaz.jpg">
+                    <img class="ci-av" src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/nika.jpg">
                     <span class="sd on"></span>
                 </div>
                 <div class="ci-body">
                     <div class="ci-top">
-                        <span class="ci-name">بهناز</span>
+                        <span class="ci-name">نیکا</span>
                     </div>
-                    <div class="ci-typing t-beh">
+                    <div class="ci-typing t-nika-1">
                         <span></span><span></span><span></span>
                     </div>
-                    <div class="ci-msg m-beh">تنهام دیگ بیا مامانم الان میاد</div>
+                    <div class="ci-msg m-nika-1">سلام منتظرتم تصویری بریم</div>
+                    <div class="ci-typing t-nika-2">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="ci-msg m-nika-2">چیشد اگر نمیایی با یکی دیگ برم</div>
                 </div>
                 <div class="ci-right">
                     <div class="badge-wrap">
-                        <span class="unread b-beh">1</span>
+                        <span class="unread b-nika-1">1</span>
+                        <span class="unread b-nika-2">2</span>
                     </div>
                 </div>
             </label>
 
-            <!-- ★ نازنین — دوم (۱۰۵ ثانیه) -->
+            <!-- ═══ چت نازنین — ظاهر شدن بعد ۱۰۳ ثانیه ═══ -->
             <label for="subTog" class="ci ci-naz">
                 <div class="ci-av-wrap">
                     <img class="ci-av" src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/nazanin.jpg">
@@ -1389,29 +1935,24 @@ a, button, label, input {
                 </div>
             </label>
 
-            <!-- ★ نیکا — آخر (۱۵۵ ثانیه) -->
-            <label for="subTog" class="ci ci-nika">
+            <!-- ═══ چت بهناز — ظاهر شدن بعد ۱۵۳ ثانیه ═══ -->
+            <label for="subTog" class="ci ci-beh">
                 <div class="ci-av-wrap">
-                    <img class="ci-av" src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/nika.jpg">
+                    <img class="ci-av" src="https://raw.githubusercontent.com/bhnsz1669-lab/dost/main/avatars/behnaz.jpg">
                     <span class="sd on"></span>
                 </div>
                 <div class="ci-body">
                     <div class="ci-top">
-                        <span class="ci-name">نیکا</span>
+                        <span class="ci-name">بهناز</span>
                     </div>
-                    <div class="ci-typing t-nika-1">
+                    <div class="ci-typing t-beh">
                         <span></span><span></span><span></span>
                     </div>
-                    <div class="ci-msg m-nika-1">سلام منتظرتم تصویری بریم</div>
-                    <div class="ci-typing t-nika-2">
-                        <span></span><span></span><span></span>
-                    </div>
-                    <div class="ci-msg m-nika-2">چیشد اگر نمیایی با یکی دیگ برم</div>
+                    <div class="ci-msg m-beh">تنهام دیگ بیا مامانم الان میاد</div>
                 </div>
                 <div class="ci-right">
                     <div class="badge-wrap">
-                        <span class="unread b-nika-1">1</span>
-                        <span class="unread b-nika-2">2</span>
+                        <span class="unread b-beh">1</span>
                     </div>
                 </div>
             </label>
